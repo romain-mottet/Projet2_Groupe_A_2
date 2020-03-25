@@ -1,0 +1,51 @@
+#coding:utf-8
+import cgi
+
+print("Content-type: text/html; charset=utf-8\n")
+
+html = """<!DOCTYPE html>
+<style>
+body {
+  background-image: white ;
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;
+}
+</style>
+                                                                    <!– partie dédier au background –>
+
+
+<head>
+    <meta charset ="utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <title >projet_2</title>
+<body>
+    <h1>Premier graphique avec des données fixes</h1>
+    <canvas id="myChart" width="400" height="100">
+    <p>Your browser does not support the canvas element.</p>  
+    </canvas>                                             <!– Feedback si le graphique ne charge pas –>
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'line',
+
+            // The data for our dataset
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+                datasets: [{
+                    label: 'test',
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [30, 25, 5, 15, 20, 30, 55,0]
+                }]
+            },
+            // Configuration options go here
+            options: {}
+            });
+    </script>
+</body>
+</html>
+"""
+
+print(html)

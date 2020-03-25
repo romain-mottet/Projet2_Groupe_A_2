@@ -1,7 +1,7 @@
 #coding:utf-8
 import cgi
 
-with open(deathCOVID.csv, "r") as file:
+with open("deathCOVID.csv", "r") as file:
     l = []
     k = []
     m = 0

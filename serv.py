@@ -1,8 +1,4 @@
-#code pour heberger en local la page via windowsshell 
-#Commun à tout le monde, ne pas toucher
-
-
-#coding: utf-8
+#coding:utf-8
 import http.server
 
 port = 80
@@ -15,5 +11,5 @@ handler.cgi_directories = ["/"]
 
 httpd = server(address, handler)
 
-print (f"sereveur démarré sur le PORT {port}")
+print (f"serveur démarré sur le PORT {port}")
 httpd.serve_forever()

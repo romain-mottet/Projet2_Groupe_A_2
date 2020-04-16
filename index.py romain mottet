@@ -51,12 +51,14 @@ body {
 print(html)
 
 
+
+
+
 second graphe 
 
 #coding:utf-8
 import cgi
 import sqlite3
-from employee import Employee
 
 conn = sqlite3.connect ('inginious.sqlite')
 
@@ -99,7 +101,7 @@ body {
             datasets: [{
                 label: "taux de réussite",
                 backgroundColor: ["green", "red"],
-                data: [100, 200]             
+                data: [{}, {}]             
             }]
             },
             options: {
@@ -115,6 +117,5 @@ body {
     </p>
 </body>
 </html>
-"""
-
+""".format(yes,no)
 print(html)

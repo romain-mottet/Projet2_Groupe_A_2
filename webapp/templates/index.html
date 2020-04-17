@@ -25,7 +25,7 @@ body {
             datasets: [{
                 label: "taux de réussite",
                 backgroundColor: ["green", "red"],
-                data: [100,200]            
+                data: [{ config ['yes']},{ config ['no']}]          <!– C'est ici que nous aimerions implenter les données –> 
             }]
             },
             options: {

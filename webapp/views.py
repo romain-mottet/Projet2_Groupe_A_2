@@ -12,17 +12,17 @@ def info_course (name):
     conn = sqlite3.connect ('inginious.sqlite')
     c = conn.cursor ()
 
-    l= []
+    lcourse= []
 
     #trouve le nombre de réussite globale 
     c.execute ("SELECT * FROM user_tasks WHERE course = '{}' and succeeded = 'true'".format(name))
     r_global = len(c.fetchall())   #info qui devrait être introduit dans le graphe
-    l.append (r_global)
+    lcourse.append (r_global)
 
     #Trouve le nombre de ratés de cours 
     c.execute ("SELECT * FROM user_tasks WHERE course = '{}' and succeeded = 'false'".format(name))
     f_global = len(c.fetchall())   #info qui devrait être introduit dans le graphe
-    l.append (f_global)
+    lcourse.append (f_global)
 
     #Trouve le nombre d'essaye total
     c.execute ("SELECT tried FROM user_tasks WHERE course = '{}'".format(name))
@@ -36,29 +36,32 @@ def info_course (name):
             else:
                 newstring += str (tried [e][i])
         nbr_tried += int (newstring)
-    l.append (nbr_tried)
+    lcourse.append (nbr_tried)
 
     
     #trouve le nombre d'essaye moyen 
-    moyenne_tried = nbr_tried //(l[0]+l[1])
-    l.append (moyenne_tried)
+    if (lcourse[0]+lcourse[1]) !=0 :
+            moyenne_tried = nbr_tried //(lcourse[0]+lcourse[1])
+            lcourse.append (moyenne_tried)
+    else :
+            lcourse.append (None)
 
     conn.close()
-    return l   
+    return lcourse  
 
-@app.route('/')  #page d'acceuil
+
+@app.route('/')
 def index():
         return render_template("index.html")
 
-@app.route('/LSINF1252')  #équivalent du cours 1
-def LSINF1252():
-        return render_template("LSINF1252.html")
+@app.route('/LSINF1252')
+def LSINF1252( infocourse = None ):
+        return render_template("LSINF1252.html", infocourse = info_course ('LSINF1252'))
 
-@app.route('/LEPL1402')   #équivalent du cours 2
-def LEPL1402():
-        return render_template("LEPL1402.html")
+@app.route('/LEPL1402')
+def LEPL1402(infocourse = None):
+        return render_template("LEPL1402.html", infocourse = info_course ('LEPL1402'))
 
-@app.route('/LSINF1101_PYTHON')   #équivalent du cours 3
-def LSINF1101_PYTHON():
-        return render_template("LSINF1101_PYTHON.html")
-
+@app.route('/LSINF1101_PYTHON')
+def LSINF1101_PYTHON(infocourse = None):
+        return render_template("LSINF1101_PYTHON.html", infocourse = info_course ('LSINF1101_PYTHON'))

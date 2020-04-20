@@ -15,27 +15,46 @@ body {
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <title >failedrate.be</title>
 <body>
-    <h1>Quelques stats sur les taches inginious</h1>
+    <h1>statistiques sur le cours ...</h1>
     <canvas id="pie-chart" width="800" height="450"></canvas>
+    <canvas id="pie-chart2" width="800" height="450"></canvas>
     <script>
         new Chart(document.getElementById("pie-chart"), {
             type: 'pie',
             data: {
-            labels: ["réussit", "raté"],
+            labels: ["finit", "En cours"],
             datasets: [{
                 label: "taux de réussite",
                 backgroundColor: ["green", "red"],
-                data: [100,200]            
+                data: [100,20]            
             }]
             },
             options: {
             title: {
                 display: true,
-                text: 'Taux de réussite de la tache palindrome du cours LSINF1252  '
+                text: 'Nombre d étudiants ayant finit le cours'
+            }
+            }
+        });
+        new Chart(document.getElementById("pie-chart2"), {
+            type: 'doughnut',
+            data: {
+            labels: ["soumissions réussites", "soumissions ratées","soumissions dépassant la mémoire","soumissions time error"],
+            datasets: [{
+                label: "taux de réussite",
+                backgroundColor: ["green", "red","yellow","blue"],
+                data: [100,200,400,300]            
+            }]
+            },
+            options: {
+            title: {
+                display: true,
+                text: 'nombre de soumissions pour ce cours'
             }
             }
         });
     </script>
+    
     <p>
         source:
     </p>

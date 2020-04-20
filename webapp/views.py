@@ -46,19 +46,19 @@ def info_course (name):
     conn.close()
     return l   
 
-@app.route('/')
+@app.route('/')  #page d'acceuil
 def index():
         return render_template("index.html")
 
-@app.route('/LSINF1252')
+@app.route('/LSINF1252')  #équivalent du cours 1
 def LSINF1252():
         return render_template("LSINF1252.html")
 
-@app.route('/LEPL1402')
+@app.route('/LEPL1402')   #équivalent du cours 2
 def LEPL1402():
         return render_template("LEPL1402.html")
 
-@app.route('/LSINF1101_PYTHON')
+@app.route('/LSINF1101_PYTHON')   #équivalent du cours 3
 def LSINF1101_PYTHON():
         return render_template("LSINF1101_PYTHON.html")
 

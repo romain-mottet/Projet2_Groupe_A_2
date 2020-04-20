@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Page Title</title>
+<title>Projet 2 analyse des données inginious </title>
 </head>
+<body style="background-color:#dbe6f0;">
+  <body>
 <body>
 <meta charset ="utf-8">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
-<h1><a href="https://www.w3schools.com/code/tryit.asp?filename=GD6JLK4D2LZX"><img width="40" height="40" border="0" src="https://efficartes.fr/wp-content/uploads/2014/05/home-152619_640.png" alt="Bouton retour à l'accueil" /></a>Titre site web</h1>
+
+<h1><a href="{{ url_for('index') }}"><img width="40" height="40" border="0" src="https://efficartes.fr/wp-content/uploads/2014/05/home-152619_640.png" alt="Bouton retour à l'accueil" /></a>Inginious Data</h1>
 <p>### expliquation du site et de ses fonctionnalités</p>
 
 
   
-    <li><a href= "{{ url_for('cours1') }}"">cours 1</a></li>
-    <li><a href= "{{ url_for('cours2') }}"">cours 2</a></li>
-    <li><a href= "{{ url_for('cours3') }}"">cours 3</a></li>
+    <li><a href= "{{ url_for('LSINF1252') }}"">LSINF1252</a></li>
+    <li><a href= "{{ url_for('LEPL1402') }}"">LEPL1402</a></li>
+    <li><a href= "{{ url_for('LSINF1101_PYTHON') }}"">LSINF1101-PYTHON</a></li>
     <li>marquez ici le nom de l'étudiant dont vouss souhaiter faire la recherche</li><p>
     <form action="/ma-page-de-traitement" method="post">
     		<div>

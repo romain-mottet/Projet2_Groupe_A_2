@@ -121,13 +121,15 @@ def LSINF1252( infocourse = None, name_task = None ):
 
         return render_template("LSINF1252.html", infocourse = info_course ('LSINF1252'))
 
+
 @app.route('/LEPL1402', methods= ['POST', 'GET'])
-def LEPL1402(infocourse = None, name_task = None):
-        if request.method == 'POST':
+def LEPL1402(infocourse = None, name_task = None ):
+        if request.method == 'POST' :
                 nom = request.form.get ("name_tache")
                 return render_template("LEPL1402.html", infocourse = info_course ('LEPL1402'), name_task = nom )
-        
-         return render_template("LEPL1402.html", infocourse = info_course ('LSINF1252'))
+
+
+        return render_template("LEPL1402.html", infocourse = info_course ('LEPL1402'))
 
 @app.route('/LSINF1101_PYTHON', methods= ['POST', 'GET'])
 def LSINF1101_PYTHON(infocourse = None, name_task = None):

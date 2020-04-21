@@ -4,7 +4,7 @@
 <title>INGInious stat v2.0</title>
 </head>
 <style>
-  body { 
+  body {
   background-image: url("https://cdn.pixabay.com/photo/2017/07/31/21/42/wallpaper-2561368_960_720.jpg");
   background-size: cover;
   background-attachment: fixed;
@@ -23,78 +23,78 @@ titre {
   text-align: center;
 }
 ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-	background-color: #f29530;
-	position: -webkit-sticky;
-	position: sticky;
-	top: 0;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #f29530;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
 }
-
+ 
 mi {
-	float: left;
+    float: left;
 }
-
+ 
 fi{
     float: right;
 }
 fi a {
-	display: block;
-	color: white;
-	text-align: center;
-	padding: 14px 16px;
-	text-decoration: none;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
 }
 fi a:hover
 {
-  	background-color: #6fa03c;
+    background-color: #6fa03c;
 }
 .active
 {
-  	background-color: #6fa03c;
+    background-color: #6fa03c;
 }
 mi a {
-	display: block;
-	color: white;
-	text-align: center;
-	padding: 14px 16px;
-	text-decoration: none;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
 }
 mi a:hover
 {
-  	background-color: #6fa03c;
+    background-color: #6fa03c;
 }
 .active
 {
-  	background-color: #6fa03c;
+    background-color: #6fa03c;
 }
 </style>
 <body>
-
+ 
 <meta charset ="utf-8">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-
+ 
  <ul>
-	<mi><a class= "active" href="{{ url_for('index') }}" ><img width="50" height="50" border="0" src="https://efficartes.fr/wp-content/uploads/2014/05/home-152619_640.png" alt="Bouton retour à l'accueil" /></a>    </mi>
-
+    <mi><a class= "active" href="{{ url_for('index') }}" ><img width="50" height="50" border="0" src="https://efficartes.fr/wp-content/uploads/2014/05/home-152619_640.png" alt="Bouton retour à l'accueil" /></a>    </mi>
+ 
     <fi><a class="active" href="https://inginious.info.ucl.ac.be/signin"><img width="50" height="50" border="0"  src="https://inginious.info.ucl.ac.be/pages/assets/logo_ingi.png" alt="Bouton retour à l'accueil" /></a>
  </fi>
 </ul>
 </style>
-
+ 
 <head>
     <meta charset ="utf-8">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <title >failedrate.be</title>
 <body>
-    <h1 style="text-align:center;">cours numéro...</h1>
-    <canvas id="pie-chart" width="800" height="450"></canvas>
+    <h1 style="text-align:center;">LSINF1252</h1>
+    <canvas id="pie-chart" width="800" height="350"></canvas>
     <br>
     <br>
     <br>
-    <canvas id="pie-chart2" width="800" height="450"></canvas>
+    <canvas id="pie-chart2" width="800" height="350"></canvas>
     <script>
         new Chart(document.getElementById("pie-chart"), {
             type: 'pie',
@@ -103,7 +103,7 @@ mi a:hover
             datasets: [{
                 label: "taux de réussite",
                 backgroundColor: ["#6fa03c", "#f29530"],
-                data: [80,20]            
+                data: [{{infocourse [0]}},{{infocourse[1]}}]            
             }]
             },
             options: {
@@ -116,17 +116,17 @@ mi a:hover
         new Chart(document.getElementById("pie-chart2"), {
             type: 'doughnut',
             data: {
-            labels: ["soumissions réussites", "soumissions ratées","soumissions dépassant la mémoire","soumissions time error"],
+            labels: ["successed","failed","Killed","overflow","timeout","crash","error"],
             datasets: [{
                 label: "taux de réussite",
-                backgroundColor: ["#6fa03c", "#f29530","#FFD700","#000000"],
-                data: [100,200,400,300]            
+                backgroundColor: ["blue", "yellow","green","red",'orange','cyan','pink'],
+                data: [{{infocourse[4][1]}},{{infocourse[4][0]}},{{infocourse[4][2]}},{{infocourse[4][3]}},{{infocourse[4][4]}},{{infocourse[4][5]}}, {{infocourse[4][6]}}]            
             }]
             },
             options: {
             title: {
                 display: true,
-                text: 'nombre de soumissions pour ce cours'
+                text: 'nombre de soumissions pour ce cours: {{infocourse[2]}}'
             }
             }
         });
@@ -155,52 +155,7 @@ mi a:hover
     <input type= "submit">
   </form>
     </p>
-  <canvas id="pie-chart3" width="800" height="450"></canvas>
-  <canvas id="pie-chart4" width="800" height="450"></canvas>
-  <script>
-        new Chart(document.getElementById("pie-chart3"), {
-    type: 'bar',
-    data: {
-      labels: ["error","- de 10","10-20","20-30","30-40","40-50","50-60","60-70","70-80","80-90","90-100"],
-      datasets: [
-        {
-          label: "%",
-          backgroundColor: "#3e95cd",
-          data: [133,221,783,2478,2353,2435,253,465,2354,2357,321,2345]
-        },
-      ]
-    },
-    options: {
-      title: {
-        display: true,
-        text: '% des étudiants lors de leurs dernière soumission'
-      }
-    }
-});
-        new Chart(document.getElementById("pie-chart4"), {
-    type: 'radar',
-    data: {
-      labels: 
-["failed","Killed","overflow","timeout","crash","error","NULL"],
-      datasets: [
-        {
-          label: "échec",
-          fill: true,
-          backgroundColor: "rgba(179,181,198,0.2)",
-          borderColor: "rgba(179,181,198,1)",
-          pointBorderColor: "#fff",
-          pointBackgroundColor: "rgba(179,181,198,1)",
-          data: [10,30,50,70,100,43,23]
-        },
-      ]
-    },
-    options: {
-      title: {
-        display: true,
-        text: 'raison de l échec de l étudiant ( veuillez entrer un nom de cours si rien ne s affiche)'
-      }
-    }
-});
+
 </script>
 </body>
 </html>

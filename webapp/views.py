@@ -63,78 +63,113 @@ def info_task (tache):
     #trouve le cours où est la tâche
     c.execute ("SELECT course FROM user_tasks WHERE task = '{}'".format(tache))
     cours = c.fetchone()
-    name = ""
-    for i in range (0, len (cours)):
-            if cours [i] == "(" or cours [i] == ")" or cours [i] == ",":
-                "nothing"
-            else:
-                name += str (cours[i])
-    ltache.append (name)
-    
-    #trouve le nombre de réussite de la tache
-    c.execute ("SELECT * FROM user_tasks WHERE task = '{}' and succeeded = 'true'".format(tache))
-    r_tache = len (c.fetchall ())
-    ltache.append (r_tache)
+    if cours == None :
+            return None
+    else:
+        name = ""
+        for i in range (0, len (cours)):
+                if cours [i] == "(" or cours [i] == ")" or cours [i] == ",":
+                    "nothing"
+                else:
+                    name += str (cours[i])
+        ltache.append (name)
+        
+        #trouve le nombre de réussite de la tache
+        c.execute ("SELECT * FROM user_tasks WHERE task = '{}' and succeeded = 'true'".format(tache))
+        r_tache = len (c.fetchall ())
+        ltache.append (r_tache)
 
 
-    #trouve le nombre de réussite de la tache
-    c.execute ("SELECT * FROM user_tasks WHERE task = '{}' and succeeded = 'false'".format(tache))
-    f_tache = len (c.fetchall ())
-    ltache.append (f_tache)
+        #trouve le nombre de réussite de la tache
+        c.execute ("SELECT * FROM user_tasks WHERE task = '{}' and succeeded = 'false'".format(tache))
+        f_tache = len (c.fetchall ())
+        ltache.append (f_tache)
 
 
-    #trouve le nombre d'essaye de la tâche 
-    c.execute ("SELECT tried FROM user_tasks WHERE task = '{}'".format(tache))
-    tried = c.fetchall ()
-    nbr_tried = 0
-    for e in range (0, len (tried)):
-        newstring = ""
-        for i in range (0, len (tried [e])):
-            if tried [e][i] == "(" or tried [e][i] == ")" or tried [e][i] == ",":
-                "nothing"
-            else:
-                newstring += str (tried [e][i])
-        nbr_tried += int (newstring)
-    ltache.append (nbr_tried)
+        #trouve le nombre d'essaye de la tâche 
+        c.execute ("SELECT tried FROM user_tasks WHERE task = '{}'".format(tache))
+        tried = c.fetchall ()
+        nbr_tried = 0
+        for e in range (0, len (tried)):
+            newstring = ""
+            for i in range (0, len (tried [e])):
+                if tried [e][i] == "(" or tried [e][i] == ")" or tried [e][i] == ",":
+                    "nothing"
+                else:
+                    newstring += str (tried [e][i])
+            nbr_tried += int (newstring)
+        ltache.append (nbr_tried)
 
 
-    #trouve le nombre moyen d'essaye par étudiant 
-    if (ltache[1]+ltache[2]) !=0 :
-            moyenne_tried = nbr_tried //(ltache[1]+ltache[2])
-            ltache.append (moyenne_tried)
-    else :
-            ltache.append (None)
+        #trouve le nombre moyen d'essaye par étudiant 
+        if (ltache[1]+ltache[2]) !=0 :
+                moyenne_tried = nbr_tried //(ltache[1]+ltache[2])
+                ltache.append (moyenne_tried)
+        else :
+                ltache.append (None)
 
-    conn.close()
-    return ltache
+        conn.close()
+        return ltache
+
+
+
 
 @app.route('/')
 def index():
         return render_template("index.html")
 
 @app.route('/LSINF1252', methods= ['POST', 'GET'])
-def LSINF1252( infocourse = None, name_task = None ):
+def LSINF1252( infocourse = None, name_task = None , infotache = None ):
         if request.method == 'POST':
                 nom = request.form.get ("name_tache")
-                return render_template("LSINF1252.html", infocourse = info_course ('LSINF1252'), name_task = nom )
+                ltache = info_task (nom)
+                if info_task (nom) != None :
+                        if ltache [0] == "LSINF1252":
+                                return render_template("LSINF1252.html", infocourse = info_course ('LSINF1252'), name_task = nom, infotache = ltache )
+                        else:
+                                return render_template("LSINF1252.html", infocourse = info_course ('LSINF1252'), name_task = "Cette tâche ne  fait pas partie du cours LSINF1252 " )
+                
+                else:
+                        return render_template("LSINF1252.html", infocourse = info_course ('LSINF1252'), name_task = "Cette têche n'existe pas" )  
 
 
         return render_template("LSINF1252.html", infocourse = info_course ('LSINF1252'))
 
 
+
+
 @app.route('/LEPL1402', methods= ['POST', 'GET'])
-def LEPL1402(infocourse = None, name_task = None ):
-        if request.method == 'POST' :
+def LEPL1402( infocourse = None, name_task = None , infotache = None):
+        if request.method == 'POST':
                 nom = request.form.get ("name_tache")
-                return render_template("LEPL1402.html", infocourse = info_course ('LEPL1402'), name_task = nom )
+                ltache = info_task (nom)
+                if info_task (nom) != None :
+                        if ltache [0] == "LEPL1402":
+                                return render_template("LEPL1402.html", infocourse = info_course ('LEPL1402'), name_task = nom , infotache = ltache)
+                        else:
+                                return render_template("LEPL1402.html", infocourse = info_course ('LEPL1402'), name_task = "Cette tâche ne  fait pas partie du cours LEPL1402 " )
+                
+                else:
+                        return render_template("LEPL1402.html", infocourse = info_course ('LEPL1402'), name_task = "Cette têche n'existe pas" )  
 
 
         return render_template("LEPL1402.html", infocourse = info_course ('LEPL1402'))
 
+
+
 @app.route('/LSINF1101_PYTHON', methods= ['POST', 'GET'])
-def LSINF1101_PYTHON(infocourse = None, name_task = None):
+def LSINF1101_PYTHON( infocourse = None, name_task = None, infotache = None ):
         if request.method == 'POST':
                 nom = request.form.get ("name_tache")
-                return render_template("LSINF1101_PYTHON.html", infocourse = info_course ('LSINF1101_PYTHON'), name_task = nom )
+                ltache = info_task (nom)
+                if info_task (nom) != None :
+                        if ltache [0] == "LSINF1101_PYTHON":
+                                return render_template("LSINF1101_PYTHON.html", infocourse = info_course ('LSINF1101_PYTHON'), name_task = nom, infotache = ltache )
+                        else:
+                                return render_template("LSINF1101_PYTHON.html", infocourse = info_course ('LSINF1101_PYTHON'), name_task = "Cette tâche ne  fait pas partie du cours LSINF1101_PYTHON " )
+                
+                else:
+                        return render_template("LSINF1101_PYTHON.html", infocourse = info_course ('LSINF1101_PYTHON'), name_task = "Cette têche n'existe pas" )  
+
 
         return render_template("LSINF1101_PYTHON.html", infocourse = info_course ('LSINF1101_PYTHON'))

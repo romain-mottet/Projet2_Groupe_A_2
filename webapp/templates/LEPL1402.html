@@ -1,43 +1,159 @@
 <!DOCTYPE html>
+<html>
+<head>
+<title>INGInious stat v2.0</title>
+</head>
 <style>
-body {
-  background-image: white ;
-  background-repeat: no-repeat;
-  background-attachment: fixed;  
+  body { 
+  background-image: url("https://cdn.pixabay.com/photo/2017/07/31/21/42/wallpaper-2561368_960_720.jpg");
   background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+li {
+  font-family: Times New Roman ;
+  font-size: 25px;
+}
+p {
+  font-family: Times New Roman ;
+}
+titre {
+  font-family: Times New Roman ;
+  font-size: 35px;
+  text-align: center;
+}
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #f29530;
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+}
+
+mi {
+	float: left;
+}
+
+fi{
+    float: right;
+}
+fi a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+fi a:hover
+{
+  	background-color: #6fa03c;
+}
+.active
+{
+  	background-color: #6fa03c;
+}
+mi a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+mi a:hover
+{
+  	background-color: #6fa03c;
+}
+.active
+{
+  	background-color: #6fa03c;
 }
 </style>
-                                                                    <!– partie dédier au background –>
+<body>
 
+<meta charset ="utf-8">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+ <ul>
+	<mi><a class= "active" href="{{ url_for('index') }}" ><img width="50" height="50" border="0" src="https://efficartes.fr/wp-content/uploads/2014/05/home-152619_640.png" alt="Bouton retour à l'accueil" /></a>    </mi>
+	
+    <fi><a class="active" href="https://inginious.info.ucl.ac.be/signin"><img width="50" height="50" border="0"  src="https://inginious.info.ucl.ac.be/pages/assets/logo_ingi.png" alt="Bouton retour à l'accueil" /></a>
+ </fi>
+</ul>
+</style>
 
 <head>
     <meta charset ="utf-8">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <title >failedrate.be</title>
 <body>
-    <h1>Quelques stats sur les taches inginious</h1>
+    <h1 style="text-align:center;"> 1) Graphiques à propos des exercices du cours LEPL1402</h1>
     <canvas id="pie-chart" width="800" height="450"></canvas>
+    <br>
+    <br>
+    <br>
+    <canvas id="pie-chart2" width="800" height="450"></canvas>
     <script>
         new Chart(document.getElementById("pie-chart"), {
             type: 'pie',
             data: {
-            labels: ["réussit", "raté"],
+            labels: ["finit", "En cours"],
             datasets: [{
                 label: "taux de réussite",
-                backgroundColor: ["green", "red"],
-                data: [100,200]            
+                backgroundColor: ["#6fa03c", "#f29530"],
+                data: [80,20]            
             }]
             },
             options: {
             title: {
                 display: true,
-                text: 'Taux de réussite de la tache palindrome du cours LSINF1252  '
+                text: 'Nombre d étudiants ayant finit le cours'
+            }
+            }
+        });
+        new Chart(document.getElementById("pie-chart2"), {
+            type: 'doughnut',
+            data: {
+            labels: ["soumissions réussites", "soumissions ratées","soumissions dépassant la mémoire","soumissions time error"],
+            datasets: [{
+                label: "taux de réussite",
+                backgroundColor: ["#6fa03c", "#f29530","#FFD700","#000000"],
+                data: [100,200,400,300]            
+            }]
+            },
+            options: {
+            title: {
+                display: true,
+                text: 'nombre de soumissions pour ce cours'
             }
             }
         });
     </script>
-    <p>
-        source:
+    <br>
+    <br>
+    <br>
+       <h1 style="text-align:center;">2) chiffre et statistique à propos des exercices du cours LEPL1402</h1>
+       <br>
+    <p style="text-align:center;">poucentage d'élèves ayant réussi : 20%</p>
+    <p style="text-align:center;">pententage d'élèves ayant soumis : 70%</p>
+    <p style="text-align:center;">ext</p>
+    <br>
+    <br>
+    <br>
+           <h1 style="text-align:center;">3) résultats pour les exercices</h1>
+    <p style="text-align:center;"> marquez ici le nom du cours dont vous souhaitez faire la recherche</li><p>
+  <form method="POST">
+    <>Nom de la tache <input type= 'text' name= "name_tache">
+    <input type= "submit">
+  </form>
     </p>
 </body>
 </html>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>

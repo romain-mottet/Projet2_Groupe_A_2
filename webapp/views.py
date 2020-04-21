@@ -1,5 +1,6 @@
-from flask import Flask, render_template
+from flask import Flask, render_template , request
 from flask import abort, redirect, url_for
+
 
 app = Flask(__name__)
 import sqlite3
@@ -49,19 +50,89 @@ def info_course (name):
     conn.close()
     return lcourse  
 
+def info_task (tache):
+    """
+    pré: Le nom de la tache 
+    post: return une liste sous la forme [nom du cours où elle se trouve,nombre de réussite, nombre d'échec , nombre d'essaye total, nombre d'essaye moyen ]
+    """
+    conn = sqlite3.connect ('inginious.sqlite')
+    c = conn.cursor ()
+
+    ltache = []
+
+    #trouve le cours où est la tâche
+    c.execute ("SELECT course FROM user_tasks WHERE task = '{}'".format(tache))
+    cours = c.fetchone()
+    name = ""
+    for i in range (0, len (cours)):
+            if cours [i] == "(" or cours [i] == ")" or cours [i] == ",":
+                "nothing"
+            else:
+                name += str (cours[i])
+    ltache.append (name)
+    
+    #trouve le nombre de réussite de la tache
+    c.execute ("SELECT * FROM user_tasks WHERE task = '{}' and succeeded = 'true'".format(tache))
+    r_tache = len (c.fetchall ())
+    ltache.append (r_tache)
+
+
+    #trouve le nombre de réussite de la tache
+    c.execute ("SELECT * FROM user_tasks WHERE task = '{}' and succeeded = 'false'".format(tache))
+    f_tache = len (c.fetchall ())
+    ltache.append (f_tache)
+
+
+    #trouve le nombre d'essaye de la tâche 
+    c.execute ("SELECT tried FROM user_tasks WHERE task = '{}'".format(tache))
+    tried = c.fetchall ()
+    nbr_tried = 0
+    for e in range (0, len (tried)):
+        newstring = ""
+        for i in range (0, len (tried [e])):
+            if tried [e][i] == "(" or tried [e][i] == ")" or tried [e][i] == ",":
+                "nothing"
+            else:
+                newstring += str (tried [e][i])
+        nbr_tried += int (newstring)
+    ltache.append (nbr_tried)
+
+
+    #trouve le nombre moyen d'essaye par étudiant 
+    if (ltache[1]+ltache[2]) !=0 :
+            moyenne_tried = nbr_tried //(ltache[1]+ltache[2])
+            ltache.append (moyenne_tried)
+    else :
+            ltache.append (None)
+
+    conn.close()
+    return ltache
 
 @app.route('/')
 def index():
         return render_template("index.html")
 
-@app.route('/LSINF1252')
-def LSINF1252( infocourse = None ):
+@app.route('/LSINF1252', methods= ['POST', 'GET'])
+def LSINF1252( infocourse = None, name_task = None ):
+        if request.method == 'POST':
+                nom = request.form.get ("name_tache")
+                return render_template("LSINF1252.html", infocourse = info_course ('LSINF1252'), name_task = nom )
+
+
         return render_template("LSINF1252.html", infocourse = info_course ('LSINF1252'))
 
-@app.route('/LEPL1402')
-def LEPL1402(infocourse = None):
-        return render_template("LEPL1402.html", infocourse = info_course ('LEPL1402'))
+@app.route('/LEPL1402', methods= ['POST', 'GET'])
+def LEPL1402(infocourse = None, name_task = None):
+        if request.method == 'POST':
+                nom = request.form.get ("name_tache")
+                return render_template("LEPL1402.html", infocourse = info_course ('LEPL1402'), name_task = nom )
+        
+         return render_template("LEPL1402.html", infocourse = info_course ('LSINF1252'))
 
-@app.route('/LSINF1101_PYTHON')
-def LSINF1101_PYTHON(infocourse = None):
+@app.route('/LSINF1101_PYTHON', methods= ['POST', 'GET'])
+def LSINF1101_PYTHON(infocourse = None, name_task = None):
+        if request.method == 'POST':
+                nom = request.form.get ("name_tache")
+                return render_template("LSINF1101_PYTHON.html", infocourse = info_course ('LSINF1101_PYTHON'), name_task = nom )
+
         return render_template("LSINF1101_PYTHON.html", infocourse = info_course ('LSINF1101_PYTHON'))

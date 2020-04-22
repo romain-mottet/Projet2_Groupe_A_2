@@ -216,7 +216,7 @@ def index():
         return render_template("index.html")
 
 @app.route('/LSINF1252', methods= ['POST', 'GET'])
-def LSINF1252( infocourse = None, name_task = None , infotache = None):
+def LSINF1252( infocourse = None, name_task = None , infotache = None, name = None):
         if request.method == 'POST':
                 nom = request.form.get ("name_tache")
                 ltache = info_task (nom)
@@ -224,19 +224,19 @@ def LSINF1252( infocourse = None, name_task = None , infotache = None):
                         if ltache [0] == "LSINF1252":
                                 return render_template("infotache.html", infocourse = info_course ('LSINF1252'), name_task = nom, infotache = ltache)
                         else:
-                                return render_template("LSINF1252.html", infocourse = info_course ('LSINF1252'), name_task = "Cette tâche ne  fait pas partie du cours LSINF1252 " , infotache = ['', 0, 0, 0, 0, [0, 0, 0, 8, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]] )
+                                return render_template("cours.html", infocourse = info_course ('LSINF1252'), name_task = "Cette tâche ne  fait pas partie du cours LSINF1252 " , infotache = ['', 0, 0, 0, 0, [0, 0, 0, 8, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]], name = 'LSINF1252' )
                 
                 else:
-                        return render_template("LSINF1252.html", infocourse = info_course ('LSINF1252'), name_task = "Cette têche n'existe pas" , infotache = ['', 0, 0, 0, 0, [0, 0, 0, 8, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]] )  
+                        return render_template("cours.html", infocourse = info_course ('LSINF1252'), name_task = "Cette têche n'existe pas" , infotache = ['', 0, 0, 0, 0, [0, 0, 0, 8, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]], name = 'LSINF1252' )  
 
 
-        return render_template("LSINF1252.html", infocourse = info_course ('LSINF1252'), infotache = ['', 0, 0, 0, 0, [0, 0, 0, 8, 0, 0, 0, 0, 0, 0], [2, 0, 0, 0, 0, 0, 0]] )
+        return render_template("cours.html", infocourse = info_course ('LSINF1252'), infotache = ['', 0, 0, 0, 0, [0, 0, 0, 8, 0, 0, 0, 0, 0, 0], [2, 0, 0, 0, 0, 0, 0]], name = 'LSINF1252' )
 
 
 
 
 @app.route('/LEPL1402', methods= ['POST', 'GET'])
-def LEPL1402( infocourse = None, name_task = None , infotache = None):
+def LEPL1402( infocourse = None, name_task = None , infotache = None, name = None):
         if request.method == 'POST':
                 nom = request.form.get ("name_tache")
                 ltache = info_task (nom)
@@ -244,18 +244,18 @@ def LEPL1402( infocourse = None, name_task = None , infotache = None):
                         if ltache [0] == "LEPL1402":
                                 return render_template("infotache.html", infocourse = info_course ('LEPL1402'), name_task = nom , infotache = ltache)
                         else:
-                                return render_template("LEPL1402.html", infocourse = info_course ('LEPL1402'), name_task = "Cette tâche ne  fait pas partie du cours LEPL1402 " )
+                                return render_template("cours.html", infocourse = info_course ('LEPL1402'), name_task = "Cette tâche ne  fait pas partie du cours LEPL1402 ", name = 'LEPL1402' )
                 
                 else:
-                        return render_template("LEPL1402.html", infocourse = info_course ('LEPL1402'), name_task = "Cette têche n'existe pas" )  
+                        return render_template("cours.html", infocourse = info_course ('LEPL1402'), name_task = "Cette têche n'existe pas" , name = 'LEPL1402')  
 
 
-        return render_template("LEPL1402.html", infocourse = info_course ('LEPL1402'))
+        return render_template("cours.html", infocourse = info_course ('LEPL1402'), name = 'LEPL1402')
 
 
 
 @app.route('/LSINF1101_PYTHON', methods= ['POST', 'GET'])
-def LSINF1101_PYTHON( infocourse = None, name_task = None, infotache = None ):
+def LSINF1101_PYTHON( infocourse = None, name_task = None, infotache = None , name = None ):
         if request.method == 'POST':
                 nom = request.form.get ("name_tache")
                 ltache = info_task (nom)
@@ -263,10 +263,10 @@ def LSINF1101_PYTHON( infocourse = None, name_task = None, infotache = None ):
                         if ltache [0] == "LSINF1101_PYTHON":
                                 return render_template("infotache.html", infocourse = info_course ('LSINF1101_PYTHON'), name_task = nom, infotache = ltache)
                         else:
-                                return render_template("LSINF1101_PYTHON.html", infocourse = info_course ('LSINF1101_PYTHON'), name_task = "Cette tâche ne  fait pas partie du cours LSINF1101_PYTHON " )
+                                return render_template("cours.html", infocourse = info_course ('LSINF1101_PYTHON'), name_task = "Cette tâche ne  fait pas partie du cours LSINF1101_PYTHON " , name = 'LSINF1101_PYTHON')
                 
                 else:
-                        return render_template("LSINF1101_PYTHON.html", infocourse = info_course ('LSINF1101_PYTHON'), name_task = "Cette têche n'existe pas" )  
+                        return render_template("cours.html", infocourse = info_course ('LSINF1101_PYTHON'), name_task = "Cette têche n'existe pas", name = 'LSINF1101_PYTHON' )  
 
 
-        return render_template("LSINF1101_PYTHON.html", infocourse = info_course ('LSINF1101_PYTHON'))
+        return render_template("cours.html", infocourse = info_course ('LSINF1101_PYTHON'), name = 'LSINF1101_PYTHON')

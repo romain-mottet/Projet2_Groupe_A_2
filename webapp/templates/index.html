@@ -1,38 +1,124 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Projet 2 analyse des données inginious </title>
+<title>INGInious stat v2.0</title>
 </head>
-<body style="background-color:#dbe6f0;">
-  <body>
+<style>
+  body { 
+  background-image: url("https://cdn.pixabay.com/photo/2017/07/31/21/42/wallpaper-2561368_960_720.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+li {
+  font-family: Times New Roman ;
+  font-size: 25px;
+}
+p {
+  font-family: Times New Roman ;
+}
+titre {
+  font-family: Times New Roman ;
+  font-size: 35px;
+  text-align: center;
+}
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #f29530;
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+}
+
+mi {
+	float: left;
+}
+
+fi{
+    float: right;
+}
+fi a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+fi a:hover
+{
+  	background-color: #6fa03c;
+}
+.active
+{
+  	background-color: #6fa03c;
+}
+mi a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+mi a:hover
+{
+  	background-color: #6fa03c;
+}
+.active
+{
+  	background-color: #6fa03c;
+}
+</style>
 <body>
+
 <meta charset ="utf-8">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
-
-<h1><a href="{{ url_for('index') }}"><img width="40" height="40" border="0" src="https://efficartes.fr/wp-content/uploads/2014/05/home-152619_640.png" alt="Bouton retour à l'accueil" /></a>Inginious Data</h1>
-<p>### expliquation du site et de ses fonctionnalités</p>
+ <ul>
+	<mi><a class= "active" href="{{ url_for('index') }}" ><img width="50" height="50" border="0" src="https://efficartes.fr/wp-content/uploads/2014/05/home-152619_640.png" alt="Bouton retour à l'accueil" /></a>    </mi>
+	
+    <fi><a class="active" href="https://inginious.info.ucl.ac.be/signin"><img width="50" height="50" border="0"  src="https://inginious.info.ucl.ac.be/pages/assets/logo_ingi.png" alt="Bouton retour à l'accueil" /></a>
+ </fi>
+</ul>
 
 
   
-    <li><a href= "{{ url_for('LSINF1252') }}"">LSINF1252</a></li>
-    <li><a href= "{{ url_for('LEPL1402') }}"">LEPL1402</a></li>
-    <li><a href= "{{ url_for('LSINF1101_PYTHON') }}"">LSINF1101-PYTHON</a></li>
-    <li>marquez ici le nom de l'étudiant dont vouss souhaiter faire la recherche</li><p>
+
+
+  <br>
+  <br>
+  <br>
+  
+
+<p style="text-align:center;"; ><FONT size="10pt">INGIgraphe</p></FONT>
+  <br>
+<p style="text-align:center;">Bienvenue cher utilisateur. Ce site à pour but de regrouper toutes les informations administrateur récoltés à propos des exercices inginious afin de vous en faciliter la vision d'ensemble </p>
+
+<center>
+    <li><a href="{{ url_for('LEPL1402') }}">LEPL1402</a></li>
+    <li><a href="{{ url_for('LSINF1101_PYTHON') }}">LSINF1101_PYTHON</a></li>
+    <li><a href="{{ url_for('LSINF1252') }}">LSINF1252</a></li>
+    <br>
+    <p> marquez ici le nom de l'étudiant dont vous souhaitez faire la recherche</li><p>
     <form action="/ma-page-de-traitement" method="post">
     		<div>
         		<label for="name">nom étudiant :</label>
         		<input type="text" id="name" name="user_name">
             </div>
+              <br>
     		<div class="button">
         		<button type="submit">Envoyer le message</button>
   			</div>
 		</form>
 
 
-  </p><img src= "https://lh3.googleusercontent.com/proxy/aTZonPbcX3vjj3ZJK_1F3aOHa2BZbf7fW_lUeiixWXeMHwPsEprouIxJGzTZrAJPrqtdhzCSrEfKU8xvP3pIu9PkLbbb9bLeb8McIY5GlGP6ANxFFsaXxsjJ-yqgYmnOJbswnc3E" alt=
-  "Une photo du jeu plague inc" width=
-  "530" height="370" ></p>
+  </p><img src= "https://inginious.org/pages/assets/welcome/logo_full.png" alt=
+  "Une photo de processeur" width="350" height="500" ></p>
  
     </script>
 </body>
+</FONT>
+  <br>
+  <br>

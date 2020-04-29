@@ -144,7 +144,7 @@ def info_task (tache):
         ltache.append (r_tache)
 
 
-        #trouve le nombre de réussite de la tache
+        #trouve le nombre d'échec de la tache
         c.execute ("SELECT * FROM user_tasks WHERE task = '{}' and succeeded = 'false'".format(tache))
         f_tache = len (c.fetchall ())
         ltache.append (f_tache)
@@ -255,18 +255,18 @@ def LEPL1402( infocourse = None, name_task = None , infotache = None, name = Non
 
 
 @app.route('/LSINF1101_PYTHON', methods= ['POST', 'GET'])
-def LSINF1101_PYTHON( infocourse = None, name_task = None, infotache = None , name = None ):
+def LSINF1101_PYTHON( infocourse = None, name_task = None , infotache = None, name = None):
         if request.method == 'POST':
                 nom = request.form.get ("name_tache")
                 ltache = info_task (nom)
                 if info_task (nom) != None :
-                        if ltache [0] == "LSINF1101_PYTHON":
-                                return render_template("infotache.html", infocourse = info_course ('LSINF1101_PYTHON'), name_task = nom, infotache = ltache)
+                        if ltache [0] == "LSINF1101-PYTHON":
+                                return render_template("infotache.html", infocourse = info_course ('LSINF1101-PYTHON'), name_task = nom , infotache = ltache)
                         else:
-                                return render_template("cours.html", infocourse = info_course ('LSINF1101_PYTHON'), name_task = "Cette tâche ne  fait pas partie du cours LSINF1101_PYTHON " , name = 'LSINF1101_PYTHON')
+                                return render_template("cours.html", infocourse = info_course ('LSINF1101-PYTHON'), name_task = "Cette tâche ne  fait pas partie du cours LSINF1101-PYTHON ", name = 'LSINF1101-PYTHON' )
                 
                 else:
-                        return render_template("cours.html", infocourse = info_course ('LSINF1101_PYTHON'), name_task = "Cette têche n'existe pas", name = 'LSINF1101_PYTHON' )  
+                        return render_template("cours.html", infocourse = info_course ('LSINF1101-PYTHON'), name_task = "Cette têche n'existe pas" , name = 'LSINF1101-PYTHON')  
 
 
-        return render_template("cours.html", infocourse = info_course ('LSINF1101_PYTHON'), name = 'LSINF1101_PYTHON')
+        return render_template("cours.html", infocourse = info_course ('LSINF1101-PYTHON'), name = 'LSINF1101-PYTHON')

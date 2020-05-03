@@ -102,7 +102,7 @@ mi a:hover
             labels: ["échoué", "réussi"],
             datasets: [{
                 label: "taux de réussite",
-                backgroundColor: ["#6fa03c", "#f29530"],
+                backgroundColor: ["#f29530","#6fa03c"],
                 data: [{{infocourse [0]}},{{infocourse[1]}}]            
             }]
             },
@@ -119,7 +119,7 @@ mi a:hover
             labels: ["successed","failed","Killed","overflow","timeout","crash","error"],
             datasets: [{
                 label: "taux de réussite",
-                backgroundColor: ["blue", "yellow","green","red",'orange','cyan','pink'],
+                backgroundColor: ["#6fa03c", "#f29530","#6495ED","#8B0000",'#FFD700','#000000','#C71585'],
                 data: [{{infocourse[4][1]}},{{infocourse[4][0]}},{{infocourse[4][2]}},{{infocourse[4][3]}},{{infocourse[4][4]}},{{infocourse[4][5]}}, {{infocourse[4][6]}}]            
             }]
             },
@@ -148,11 +148,13 @@ mi a:hover
             }
         });
     </script>
+    <center>
            <h1 style="text-align:center;">2) résultats pour un exercice demandé</h1>
     <p style="text-align:center;"> marquez ici le nom du cours dont vous souhaitez faire la recherche</li><p>
   <form method="POST">
-    <>Nom de la tache <input type= 'text' name= "name_tache">
+    Nom de la tache <input type= 'text' name= "name_tache">
     <input type= "submit">
+    </center>
   </form>
     </p>
   <canvas id="pie-chart3" width="300" height="150"></canvas>

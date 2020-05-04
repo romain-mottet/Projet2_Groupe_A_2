@@ -4,6 +4,11 @@ from flask import abort, redirect, url_for
 
 app = Flask(__name__)
 import sqlite3
+import datetime
+from datetime import date
+from datetime import timedelta 
+from datetime import datetime
+
 def count_error (type , name ):
 
     """
@@ -211,18 +216,91 @@ def info_task (tache):
         return ltache 
 
 
+def submitted_on_day (type, name):
+
+    """
+    pré: type est soit course or task / name est le nom de la tâche ou du cours sous forme d'un string
+    post : return in dictionnaire où la clé est la date de la sumission et le résultat est le nombre de soumissions ce jour là
+    """
+
+    conn = sqlite3.connect ('inginious.sqlite')
+    c = conn.cursor ()
+    c.execute ("SELECT SUBSTR(submitted_on, 0, 11) FROM submissions WHERE {} = '{}'ORDER BY submitted_on ".format(type, name))
+    content = c.fetchall()
+    d = {}
+    for i in range (len (content)):
+        try:
+            d[content[i][0]] = d[content[i][0]] + 1
+        
+        except :
+            d[content[i][0]] = 1
+
+    return d
+
+def submitted_on_week (type, name):
+
+    """
+    pré: type est soit course or task / name est le nom de la tâche ou du cours sous forme d'un string
+    post: dictionnaire où la clé est un string s suivit du numéro de la semmaine, et le résultats le nombre soumissions
+    """
+    dic = submitted_on_day (type, name)
+    a = -7
+    janv_1 = date(2019,1,1)
+    dic2 = {}
+    for key, value in dic.items ():
+        keydate = datetime.fromisoformat(key)
+        temp = keydate.timetuple()
+        num_day = temp[7]
+        if a <= num_day < a+7:
+            dic2 [name] = dic2 [name]+ value
+        else:
+            while not (a <= num_day < a+7):
+                formated_date1 = "{}-{}-{}".format (janv_1.year,janv_1.month,janv_1.day)
+                later = janv_1 + timedelta(days=7)
+                formated_date2 = "{}-{}-{}".format(later.year,later.month, later.day)
+                a +=7
+                if a > 365:
+                    a = 0
+                if a <= num_day < a+7:
+                    dic2 ["{} au {}".format(formated_date1,formated_date2)] = value
+                else:
+                    if dic2 == {}:
+                        pass
+                    else:
+                        dic2 ["{} au {}".format(formated_date1,formated_date2)] = 0
+                name = "{} au {}".format(formated_date1,formated_date2)
+                janv_1 = janv_1 + timedelta(days=7)
+            
+    return dic2
+
+def sub_week_list (type, name):
+    dic = submitted_on_week (type, name)
+    final_list = []
+    key_list = []
+    value_list = []
+    for key, value in dic.items ():
+        key_list.append (key)
+        value_list.append (value)
+    if len (value_list) != len (key_list):
+        raise ValueError
+    else:
+        final_list.append (key_list)
+        final_list.append (value_list)
+        return final_list
+
+
 @app.route('/')
 def index():
         return render_template("index.html")
 
 @app.route('/LSINF1252', methods= ['POST', 'GET'])
-def LSINF1252( infocourse = None, name_task = None , infotache = None, name = None):
+def LSINF1252( infocourse = None, name_task = None , infotache = None, name = None, sub_info = None):
         if request.method == 'POST':
                 nom = request.form.get ("name_tache")
                 ltache = info_task (nom)
                 if info_task (nom) != None :
                         if ltache [0] == "LSINF1252":
-                                return render_template("infotache.html", infocourse = info_course ('LSINF1252'), name_task = nom, infotache = ltache)
+                                return render_template("infotache.html", infocourse = info_course ('LSINF1252'), name_task = nom, infotache = ltache, sub_info = sub_week_list ("task",nom))
                         else:
                                 return render_template("cours.html", infocourse = info_course ('LSINF1252'), name_task = "Cette tâche ne  fait pas partie du cours LSINF1252 " , infotache = ['', 0, 0, 0, 0, [0, 0, 0, 8, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]], name = 'LSINF1252' )
                 
@@ -236,13 +314,13 @@ def LSINF1252( infocourse = None, name_task = None , infotache = None, name = No
 
 
 @app.route('/LEPL1402', methods= ['POST', 'GET'])
-def LEPL1402( infocourse = None, name_task = None , infotache = None, name = None):
+def LEPL1402( infocourse = None, name_task = None , infotache = None, name = None, sub_info = None):
         if request.method == 'POST':
                 nom = request.form.get ("name_tache")
                 ltache = info_task (nom)
                 if info_task (nom) != None :
                         if ltache [0] == "LEPL1402":
-                                return render_template("infotache.html", infocourse = info_course ('LEPL1402'), name_task = nom , infotache = ltache)
+                                return render_template("infotache.html", infocourse = info_course ('LEPL1402'), name_task = nom , infotache = ltache, sub_info = sub_week_list ("task",nom))
                         else:
                                 return render_template("cours.html", infocourse = info_course ('LEPL1402'), name_task = "Cette tâche ne  fait pas partie du cours LEPL1402 ", name = 'LEPL1402' )
                 
@@ -255,13 +333,13 @@ def LEPL1402( infocourse = None, name_task = None , infotache = None, name = Non
 
 
 @app.route('/LSINF1101_PYTHON', methods= ['POST', 'GET'])
-def LSINF1101_PYTHON( infocourse = None, name_task = None , infotache = None, name = None):
+def LSINF1101_PYTHON( infocourse = None, name_task = None , infotache = None, name = None, sub_info = None):
         if request.method == 'POST':
                 nom = request.form.get ("name_tache")
                 ltache = info_task (nom)
                 if info_task (nom) != None :
                         if ltache [0] == "LSINF1101-PYTHON":
-                                return render_template("infotache.html", infocourse = info_course ('LSINF1101-PYTHON'), name_task = nom , infotache = ltache)
+                                return render_template("infotache.html", infocourse = info_course ('LSINF1101-PYTHON'), name_task = nom , infotache = ltache, sub_info = sub_week_list ("task",nom))
                         else:
                                 return render_template("cours.html", infocourse = info_course ('LSINF1101-PYTHON'), name_task = "Cette tâche ne  fait pas partie du cours LSINF1101-PYTHON ", name = 'LSINF1101-PYTHON' )
                 

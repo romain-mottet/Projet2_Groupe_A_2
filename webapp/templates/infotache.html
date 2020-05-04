@@ -148,7 +148,7 @@ mi a:hover
       datasets: [{
         label: "réussite",
         backgroundColor: ["red","green"],
-        data: [2478,5267]
+        data: [{{infotache[2]}},{{infotache[1]}}]
       }]
     },
     options: {
@@ -161,9 +161,9 @@ mi a:hover
 new Chart(document.getElementById("pie-chart4"), {
   type: 'line',
   data: {
-    labels: ["s1","s2","s3","s4","s5","s6","s7"],
+    labels: {{sub_info[0]|safe}}, 
     datasets: [{ 
-        data: [1750,1800,180,1900,10,1999,2050],
+        data: {{sub_info[1]|safe}},
         label: "S1",
         borderColor: "brown",
         fill: false

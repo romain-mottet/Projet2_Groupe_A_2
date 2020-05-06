@@ -1,7 +1,6 @@
+#section import
 from flask import Flask, render_template , request
 from flask import abort, redirect, url_for
-
-
 app = Flask(__name__)
 import sqlite3
 import datetime
@@ -9,17 +8,17 @@ from datetime import date
 from datetime import timedelta 
 from datetime import datetime
 
+#section comprenant toutes les fonctions traitans les données
 def count_error (type , name ):
 
     """
-    pré: type : course ou task et name = nom recherché
+    pré:  type est un string, il peut-être soit égal à "course" ou "task", name est le nom sous forme se string du cours ou de la tâche où on veut récuperer les infos
     post: retourne une liste lcount du nombre de [fail, success, killed, overflow, timeout, crash, error]
     """
 
     conn = sqlite3.connect ('inginious.sqlite')
     c = conn.cursor ()
     c.execute ("SELECT result FROM submissions WHERE {} = '{}'".format(type, name))
-
     info = c.fetchall()
     
     liste = []
@@ -75,7 +74,7 @@ def count_error (type , name ):
 def get_all_name (name):
 
     """
-    pré: le nom d'un cours
+    pré: name est le nom sous forme se string du cours où on veut récuperer les infos
     post: retourne une liste avec toutes les tâches étant dans ce cours
     """
 
@@ -96,7 +95,7 @@ def get_all_name (name):
 
 def hours_month (course, month):
     """
-    pré: course est le nom du cours, month est un string entre 01 et 12
+    pré: course est le nom du cours sous forme de string, month est un string entre 01 et 12
     post: retourne une liste avec toutes les soumissiosn du mois trié par heure
     """
     conn = sqlite3.connect ('inginious.sqlite')
@@ -126,9 +125,9 @@ def hours_month (course, month):
 def hours_course (course):
     """
     pré: le nom du cours sous forme d'un string
-    post: retourne une liste de 12 liste elle même contenant 24 éléments
+    post: retourne une liste de 12 liste elles mêmes contenant 24 éléments
           les 12 listes representent les mois dans l'ordre chronologique 
-          les 24 éléments à l'intérieur de ces liste représente le nombre de soumissiosn à cette tel heure dans ce mois
+          les 24 éléments à l'intérieur de ces listes représentent le nombre de soumissiosn à cette tel heure dans ce mois
     """
 
     list_month = ["01","02",'03','04','05','06','07','08','09','10','11','12']
@@ -141,7 +140,7 @@ def submitted_on_day (type, name):
 
     """
     pré: type est soit course or task / name est le nom de la tâche ou du cours sous forme d'un string
-    post : return in dictionnaire où la clé est la date de la sumission et le résultat est le nombre de soumissions ce jour là
+    post : return un dictionnaire où les clés sont les dates de sumissions et les résultats sont le nombre de soumissions ce jour là
     """
 
     conn = sqlite3.connect ('inginious.sqlite')
@@ -162,7 +161,7 @@ def submitted_on_week (type, name):
 
     """
     pré: type est soit course or task / name est le nom de la tâche ou du cours sous forme d'un string
-    post: dictionnaire où la clé est un string s suivit du numéro de la semmaine, et le résultats le nombre soumissions
+    post: dictionnaire où les clés sont des strings indiquant le début et la finn de la semaine, et les résultats sont le nombre soumissions cette semaine là
     """
     dic = submitted_on_day (type, name)
     a = -7
@@ -402,6 +401,7 @@ def info_task (tache):
         return ltache 
 
 
+#route vers différentes pages avec les différents cas en fonction des request de l'utilisateur
 @app.route('/')
 def index():
         return render_template("index.html")
@@ -414,13 +414,13 @@ def LSINF1252( infocourse = None, name_task = None , infotache = None, name = No
                 if info_task (nom) != None :
                         if ltache [0] == "LSINF1252":
                                 return render_template("infotache.html", infocourse = info_course ('LSINF1252'), name_task = nom, infotache = ltache)
-                        else:
+                        else: #si la tâche existe dans la base de donnée mais ne fait pas partie du cours
                                 return render_template("cours.html", infocourse = info_course ('LSINF1252'), name_task = "Cette tâche ne  fait pas partie du cours LSINF1252 " , name = 'LSINF1252' )
                 
-                else:
+                else: #si il n'existe pas de tâche avec le nom rentré
                         return render_template("cours.html", infocourse = info_course ('LSINF1252'), name_task = "Cette têche n'existe pas" , name = 'LSINF1252' )  
 
-
+        #cas où l'utilisateur n'a pas encore rentré de données 
         return render_template("cours.html", infocourse = info_course ('LSINF1252'), name = 'LSINF1252' )
 
 

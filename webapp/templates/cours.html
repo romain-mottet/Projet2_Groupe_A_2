@@ -115,7 +115,7 @@ mi a:hover
     <br>
     <br>
     <br>
-    <canvas id="line-chart" width="1000" height="750"></canvas>
+    <canvas id="line-chart" width="1000" height="500"></canvas>
     <br>
     <br>
     <br>
@@ -126,14 +126,14 @@ mi a:hover
             labels: ["réussi","échoué"],
             datasets: [{
                 label: "taux de réussite",
-                backgroundColor: ["#6fa03c","#f29530"],
+                backgroundColor: ["green","red"],
                 data: [{{infocourse[1]}},{{infocourse [0]}}]            
             }]
             },
             options: {
             title: {
                 display: true,
-                text: "Nombre d étudiants ayant réussi le cours"
+                text: "Statistique des soumissions finales pour ce cours"
             }
             }
         });
@@ -143,7 +143,7 @@ mi a:hover
             labels: ["successed","failed","Killed","overflow","timeout","crash","error"],
             datasets: [{
                 label: "taux de réussite",
-                backgroundColor: ["#6fa03c", "#f29530","#6495ED","#8B0000",'#FFD700','#000000','#C71585'],
+                backgroundColor: ["green", "red","#6495ED","#8B0000",'#FFD700','#000000','#C71585'],
                 data: [{{infocourse[4][1]}},{{infocourse[4][0]}},{{infocourse[4][2]}},{{infocourse[4][3]}},{{infocourse[4][4]}},{{infocourse[4][5]}}, {{infocourse[4][6]}}]            
             }]
             },
@@ -224,7 +224,7 @@ mi a:hover
             options: {
                 title: {
                 display: true,
-                text: 'Nombre de soumissions par heure'
+                text: 'Nombre de soumissions par heure en fonction du mois'
                 }
             }
             });

@@ -167,25 +167,24 @@ mi a:hover
 
     </script>
            <h1 style="text-align:center;">2) résultats pour un exercice demandé</h1>
+        <p style="text-align:center;"> marquez ici le nom du cours dont vous souhaitez faire la recherche</li><p>
     <center>
-    <p style="text-align:center;"> marquez ici le nom du cours dont vous souhaitez faire la recherche</li><p>
-    <div class="scrollmenu">
-    <a href="#home">Tâche1</a>
-    <a href="#home">Tâche1</a>
-    <a href="#home">Tâche1</a>
-    <a href="#home">Tâche1</a>
-    <a href="#home">Tâche1</a>
-    <a href="#home">Tâche1</a>
-    <a href="#home">Tâche1</a>
-    <a href="#home">Tâche1</a>
-    <a href="#home">Tâche1</a>
-    <a href="#home">Tâche1</a>
-    <a href="#home">Tâche1</a>
-    <a href="#home">Tâche1</a>
-    <a href="#home">Tâche1</a>
-    <a href="#home">Tâche1</a>
-    </div>
+  <form method="POST">
+
+<input list="bieres" type="text" name= "name_tache">
+<input type= "submit">
+<datalist id="bieres">
+  <option value="set_bit">
+  <option value="Tâche2">
+  <option value="Tâche3">
+  <option value="Tâche4">
+</datalist>
+    </center>
+  </form>
+  <br>
+  {{name_task}}
     </p>
+
 
 </center>
 </script>
@@ -196,12 +195,13 @@ mi a:hover
     <br>
     <br>
     <center>
+    <div class="scrollmenu">
+
     <a  href="{{ url_for('LEPL1402') }}" >LEPL1402</a>
-    <br>
+
     <a  href="{{ url_for('LSINF1252') }}" >LSINF1252</a>
-    <br>
+
     <a  href="{{ url_for('LSINF1101_PYTHON') }}" >LSINF1101_PYTHON</a>
     </center>
     <br>
     <br>
-

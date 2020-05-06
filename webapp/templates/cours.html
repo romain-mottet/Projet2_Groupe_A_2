@@ -157,64 +157,64 @@ mi a:hover
         new Chart(document.getElementById("line-chart"), {
             type: 'line',
             data: {
-                labels: [00,01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23,"23:59"],
+                labels: ['00-01','01-02','02-03','03-04','04-05','05-06','06-07','07-08','08-09','09-10','10-11','11-12','12-13','13-14','14-15','15-16','16-17','17-18','18-19','19-20','20-21','21-22','22-23','23-00'],
                 datasets: [{ 
-                    data: [86,114,106,106,107,111,133,221,783,2478,00,01,02,03,04,05,06,07,08,09,10,11,12,13,14],
+                    data: {{infocourse[5][0]|safe}},
                     label: "Janvier",
                     borderColor: "#3e95cd",
                     fill: false
                 }, { 
-                    data: [282,350,411,502,635,809,947,1402,3700,5267,00,01,02,03,04,05,06,07,08,09,10,11,12,13,14],
+                    data: {{infocourse[5][1]|safe}},
                     label: "Fevrier",
                     borderColor: "#8e5ea2",
                     fill: false
                 }, { 
-                    data: [168,170,178,190,203,276,408,547,675,734,00,01,02,03,04,05,06,07,08,09,10,11,12,13,14],
+                    data: {{infocourse[5][2]|safe}},
                     label: "Mars",
                     borderColor: "#3cba9f",
                     fill: false
                 }, { 
-                    data: [40,20,10,16,24,38,74,167,508,784,00,01,02,03,04,05,06,07,08,09,10,11,12,13,14],
+                    data: {{infocourse[5][3]|safe}},
                     label: "Avril",
                     borderColor: "#e8c3b9",
                     fill: false
                 }, { 
-                    data: [6,3,23,52,75,236,82,172,312,433,00,01,02,03,04,05,06,07,08,09,10,11,12,13,14],
+                    data: {{infocourse[5][4]|safe}},
                     label: "Mai",
                     borderColor: "#c45850",
                     fill: false
                 },{ 
-                    data: [6,3,2,72,77,926,982,172,312,433,00,01,02,03,04,05,06,07,08,09,10,11,12,13,14],
+                    data: {{infocourse[5][5]|safe}},
                     label: "Juin",
                     borderColor: "blue",
                     fill: false
                 },{ 
-                    data: [6,3,2,2,7,268,828,1782,312,433,00,01,02,03,04,05,06,07,08,09,10,11,12,13,14],
+                    data: {{infocourse[5][6]|safe}},
                     label: "Juillet",
                     borderColor: "green",
                     fill: false
                 },{ 
-                    data: [6,3,2,22,7,262,282,172,312,433,00,01,02,03,04,05,06,07,08,09,10,11,12,13,14],
+                    data: {{infocourse[5][7]|safe}},
                     label: "Aout",
                     borderColor: "yellow",
                     fill: false
                 },{ 
-                    data: [6,3,2,2,57,256,82,1572,312,433,00,01,02,03,04,05,06,07,08,09,10,11,12,13,14],
+                    data: {{infocourse[5][8]|safe}},
                     label: "Septembre",
                     borderColor: "pink",
                     fill: false
                 },{ 
-                    data: [6,3,2,2,7,26,822,1722,2312,433,00,01,02,03,04,05,06,07,08,09,10,11,12,13,14],
+                    data: {{infocourse[5][9]|safe}},
                     label: "Octobre",
                     borderColor: "red",
                     fill: false
                 },{ 
-                    data: [6,23,2,22,7,2226,82,172,312,433,00,01,02,03,04,05,06,07,08,09,10,11,12,13,14],
+                    data: {{infocourse[5][10]|safe}},
                     label: "Novembre",
                     borderColor: "purple",
                     fill: false
                 },{ 
-                    data: [6,3,2,27,77,7226,282,172,312,433,00,01,02,03,04,05,06,07,08,09,10,11,12,13,14],
+                    data: {{infocourse[5][11]|safe}},
                     label: "Decembre",
                     borderColor: "#c47850",
                     fill: false
@@ -234,10 +234,10 @@ mi a:hover
     <center>
   <form method="POST">
 
-<input list="bieres" type="text" name= "name_tache">
+<input list="liste_tache" type="text" name= "name_tache">
 <input type= "submit">
-<datalist id="bieres">
-  <option value="set_bit">
+<datalist id="liste_tache">
+  <option value="{{infocourse[6]|safe}}">
   <option value="Tâche2">
   <option value="Tâche3">
   <option value="Tâche4">
@@ -245,7 +245,7 @@ mi a:hover
     </center>
   </form>
   <br>
-  {{name_task}}
+  <FONT COLOR="#ff0000">  {{name_task}}</FONT>
     </p>
 
 

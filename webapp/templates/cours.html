@@ -112,6 +112,13 @@ mi a:hover
     <br>
     <br>
     <canvas id="pie-chart2" width="800" height="350"></canvas>
+    <br>
+    <br>
+    <br>
+    <canvas id="line-chart" width="1000" height="750"></canvas>
+    <br>
+    <br>
+    <br>
     <script>
         new Chart(document.getElementById("pie-chart"), {
             type: 'pie',
@@ -147,24 +154,80 @@ mi a:hover
             }
             }
         });
-        new Chart(document.getElementById("pie-chart3"), {
-            type: 'doughnut',
+        new Chart(document.getElementById("line-chart"), {
+            type: 'line',
             data: {
-            labels: ["soumissions réussites", "soumissions ratées","soumissions dépassant la mémoire","soumissions time error"],
-            datasets: [{
-                label: "taux de réussite",
-                backgroundColor: ["#6fa03c", "#f29530","#FFD700","#000000"],
-                data: [100,200,400,300]            
-            }]
+                labels: [00,01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23,"23:59"],
+                datasets: [{ 
+                    data: [86,114,106,106,107,111,133,221,783,2478,00,01,02,03,04,05,06,07,08,09,10,11,12,13,14],
+                    label: "Janvier",
+                    borderColor: "#3e95cd",
+                    fill: false
+                }, { 
+                    data: [282,350,411,502,635,809,947,1402,3700,5267,00,01,02,03,04,05,06,07,08,09,10,11,12,13,14],
+                    label: "Fevrier",
+                    borderColor: "#8e5ea2",
+                    fill: false
+                }, { 
+                    data: [168,170,178,190,203,276,408,547,675,734,00,01,02,03,04,05,06,07,08,09,10,11,12,13,14],
+                    label: "Mars",
+                    borderColor: "#3cba9f",
+                    fill: false
+                }, { 
+                    data: [40,20,10,16,24,38,74,167,508,784,00,01,02,03,04,05,06,07,08,09,10,11,12,13,14],
+                    label: "Avril",
+                    borderColor: "#e8c3b9",
+                    fill: false
+                }, { 
+                    data: [6,3,23,52,75,236,82,172,312,433,00,01,02,03,04,05,06,07,08,09,10,11,12,13,14],
+                    label: "Mai",
+                    borderColor: "#c45850",
+                    fill: false
+                },{ 
+                    data: [6,3,2,72,77,926,982,172,312,433,00,01,02,03,04,05,06,07,08,09,10,11,12,13,14],
+                    label: "Juin",
+                    borderColor: "blue",
+                    fill: false
+                },{ 
+                    data: [6,3,2,2,7,268,828,1782,312,433,00,01,02,03,04,05,06,07,08,09,10,11,12,13,14],
+                    label: "Juillet",
+                    borderColor: "green",
+                    fill: false
+                },{ 
+                    data: [6,3,2,22,7,262,282,172,312,433,00,01,02,03,04,05,06,07,08,09,10,11,12,13,14],
+                    label: "Aout",
+                    borderColor: "yellow",
+                    fill: false
+                },{ 
+                    data: [6,3,2,2,57,256,82,1572,312,433,00,01,02,03,04,05,06,07,08,09,10,11,12,13,14],
+                    label: "Septembre",
+                    borderColor: "pink",
+                    fill: false
+                },{ 
+                    data: [6,3,2,2,7,26,822,1722,2312,433,00,01,02,03,04,05,06,07,08,09,10,11,12,13,14],
+                    label: "Octobre",
+                    borderColor: "red",
+                    fill: false
+                },{ 
+                    data: [6,23,2,22,7,2226,82,172,312,433,00,01,02,03,04,05,06,07,08,09,10,11,12,13,14],
+                    label: "Novembre",
+                    borderColor: "purple",
+                    fill: false
+                },{ 
+                    data: [6,3,2,27,77,7226,282,172,312,433,00,01,02,03,04,05,06,07,08,09,10,11,12,13,14],
+                    label: "Decembre",
+                    borderColor: "#c47850",
+                    fill: false
+                }
+                ]
             },
             options: {
-            title: {
+                title: {
                 display: true,
-                text: 'nombre de soumissions pour ce cours'
+                text: 'Nombre de soumissions par heure'
+                }
             }
-            }
-        });
-
+            });
     </script>
            <h1 style="text-align:center;">2) résultats pour un exercice demandé</h1>
         <p style="text-align:center;"> marquez ici le nom du cours dont vous souhaitez faire la recherche</li><p>

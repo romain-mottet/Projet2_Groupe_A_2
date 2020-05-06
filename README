@@ -1,0 +1,30 @@
+# Projet2_Groupe_A_2
+Site web interactif du Groupe_A_2 dans le cadre du cours LINFO1102
+
+Pour metre en route notre site web il faut:
+- télécharger ce fichier zip 
+- l'extraire en entier
+- ouvrir le fichier run.py se trouvant dans le dossier webapp
+- Run ce fichier à l'aide votre IDE
+- Un lien vers le site en local devrait vous être proposer
+
+
+Pistes en cas d'erreur:
+1) Vérifier que le fichier est bien unzip
+2) Que les données sql sont bien téléchargées, et que la taille est différente de 0 ko
+  si il y a un problème à ce niveau là retéléchargé via à ce lien "https://sites.uclouvain.be/P2SINF/_downloads/06779d3cb5fb694d50a00dc32fb1a90b/inginious.sqlite" les données
+  et places les dans le même dossier que run.py et conf.py (fichier de départ)
+ 
+ 3) Vérifier que le dossier téléchargé est bien sous cette forme
+      
+      - webapp (fichier)
+           - templates (fichier)
+                - cours.htm (vérifiez que le format est bien .html et pas txt)
+                - index.htm (vérifiez que le format est bien .html et pas txt)
+                - infotache.htm (vérifiez que le format est bien .html et pas txt)
+           - __init__.py (vérifiez que le format est bien .py et pas .txt)
+           - models.py (vérifiez que le format est bien .py et pas .txt)
+           - views.py (vérifiez que le format est bien .py et pas .txt)
+      - config.py (vérifiez que le format est bien .py et pas .txt)
+      - run.py (vérifiez que le format est bien .py et pas .txt)
+      - inginious.sqlite (relire le points précédents si il y a un problème avec ce fichier)

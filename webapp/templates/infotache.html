@@ -4,7 +4,7 @@
 <title>INGInious stat v2.0</title>
 </head>
 <style>
-  div.scrollmenu {
+div.scrollmenu {
   background-color: #333;
   overflow: auto;
   white-space: nowrap;
@@ -106,21 +106,28 @@ mi a:hover
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <title >failedrate.be</title>
 <body>
-    <h1 style="text-align:center;">{{infotache[0]}}</h1>
+    <h1 style="text-align:center;">{{name}}</h1>
     <canvas id="pie-chart" width="800" height="350"></canvas>
     <br>
     <br>
     <br>
     <canvas id="pie-chart2" width="800" height="350"></canvas>
+    <br>
+    <br>
+    <br>
+    <canvas id="line-chart" width="1000" height="750"></canvas>
+    <br>
+    <br>
+    <br>
     <script>
         new Chart(document.getElementById("pie-chart"), {
             type: 'pie',
             data: {
-            labels: ["échoué", "réussi"],
+            labels: ["réussi","échoué"],
             datasets: [{
                 label: "taux de réussite",
-                backgroundColor: ["#6fa03c", "#f29530"],
-                data: [{{infocourse [0]}},{{infocourse[1]}}]            
+                backgroundColor: ["#6fa03c","#f29530"],
+                data: [{{infocourse[1]}},{{infocourse [0]}}]            
             }]
             },
             options: {
@@ -147,16 +154,90 @@ mi a:hover
             }
             }
         });
+        new Chart(document.getElementById("line-chart"), {
+            type: 'line',
+            data: {
+                labels: ['00-01','01-02','02-03','03-04','04-05','05-06','06-07','07-08','08-09','09-10','10-11','11-12','12-13','13-14','14-15','15-16','16-17','17-18','18-19','19-20','20-21','21-22','22-23','23-00'],
+                datasets: [{ 
+                    data: {{infocourse[5][0]|safe}},
+                    label: "Janvier",
+                    borderColor: "#3e95cd",
+                    fill: false
+                }, { 
+                    data: {{infocourse[5][1]|safe}},
+                    label: "Fevrier",
+                    borderColor: "#8e5ea2",
+                    fill: false
+                }, { 
+                    data: {{infocourse[5][2]|safe}},
+                    label: "Mars",
+                    borderColor: "#3cba9f",
+                    fill: false
+                }, { 
+                    data: {{infocourse[5][3]|safe}},
+                    label: "Avril",
+                    borderColor: "#e8c3b9",
+                    fill: false
+                }, { 
+                    data: {{infocourse[5][4]|safe}},
+                    label: "Mai",
+                    borderColor: "#c45850",
+                    fill: false
+                },{ 
+                    data: {{infocourse[5][5]|safe}},
+                    label: "Juin",
+                    borderColor: "blue",
+                    fill: false
+                },{ 
+                    data: {{infocourse[5][6]|safe}},
+                    label: "Juillet",
+                    borderColor: "green",
+                    fill: false
+                },{ 
+                    data: {{infocourse[5][7]|safe}},
+                    label: "Aout",
+                    borderColor: "yellow",
+                    fill: false
+                },{ 
+                    data: {{infocourse[5][8]|safe}},
+                    label: "Septembre",
+                    borderColor: "pink",
+                    fill: false
+                },{ 
+                    data: {{infocourse[5][9]|safe}},
+                    label: "Octobre",
+                    borderColor: "red",
+                    fill: false
+                },{ 
+                    data: {{infocourse[5][10]|safe}},
+                    label: "Novembre",
+                    borderColor: "purple",
+                    fill: false
+                },{ 
+                    data: {{infocourse[5][11]|safe}},
+                    label: "Decembre",
+                    borderColor: "#c47850",
+                    fill: false
+                }
+                ]
+            },
+            options: {
+                title: {
+                display: true,
+                text: 'Nombre de soumissions par heure'
+                }
+            }
+            });
     </script>
            <h1 style="text-align:center;">2) résultats pour un exercice demandé</h1>
-    <p style="text-align:center;"> marquez ici le nom du cours dont vous souhaitez faire la recherche</li><p>
+        <p style="text-align:center;"> marquez ici le nom du cours dont vous souhaitez faire la recherche</li><p>
     <center>
-      <form method="POST">
+  <form method="POST">
 
-<input list="bieres" type="text" name= "name_tache">
+<input list="liste_tache" type="text" name= "name_tache">
 <input type= "submit">
-<datalist id="bieres">
-  <option value="set_bit">
+<datalist id="liste_tache">
+  <option value="{{infocourse[6]|safe}}">
   <option value="Tâche2">
   <option value="Tâche3">
   <option value="Tâche4">
@@ -164,7 +245,6 @@ mi a:hover
     </center>
   </form>
   <br>
-  {{name_task}}
     </p>
   <canvas id="pie-chart3" width="300" height="150"></canvas>
   <canvas id="pie-chart4" width="300" height="150"></canvas>
@@ -189,9 +269,9 @@ mi a:hover
 new Chart(document.getElementById("pie-chart4"), {
   type: 'line',
   data: {
-    labels: {{sub_info[0]|safe}}, 
+    labels: {{infotache[7][0]|safe}}, 
     datasets: [{ 
-        data: {{sub_info[1]|safe}},
+        data: {{infotache[7][]|safe}},
         label: "S1",
         borderColor: "brown",
         fill: false

@@ -4,6 +4,23 @@
 <title>INGInious stat v2.0</title>
 </head>
 <style>
+  div.scrollmenu {
+  background-color: #333;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+div.scrollmenu a {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+}
+
+div.scrollmenu a:hover {
+  background-color: #777;
+}
   body {
   background-image: url("https://cdn.pixabay.com/photo/2017/07/31/21/42/wallpaper-2561368_960_720.jpg");
   background-size: cover;
@@ -134,11 +151,20 @@ mi a:hover
            <h1 style="text-align:center;">2) résultats pour un exercice demandé</h1>
     <p style="text-align:center;"> marquez ici le nom du cours dont vous souhaitez faire la recherche</li><p>
     <center>
-  <form method="POST">
-    Nom de la tache <input type= 'text' name= "name_tache">
-    <input type= "submit">
+      <form method="POST">
+
+<input list="bieres" type="text" name= "name_tache">
+<input type= "submit">
+<datalist id="bieres">
+  <option value="set_bit">
+  <option value="Tâche2">
+  <option value="Tâche3">
+  <option value="Tâche4">
+</datalist>
     </center>
   </form>
+  <br>
+  {{name_task}}
     </p>
   <canvas id="pie-chart3" width="300" height="150"></canvas>
   <canvas id="pie-chart4" width="300" height="150"></canvas>
@@ -182,9 +208,18 @@ new Chart(document.getElementById("pie-chart4"), {
 </script>
 </body>
 </html>
+<br>
     <br>
     <br>
     <br>
-    <br>
+    <center>
+    <div class="scrollmenu">
+
+    <a  href="{{ url_for('LEPL1402') }}" >LEPL1402</a>
+
+    <a  href="{{ url_for('LSINF1252') }}" >LSINF1252</a>
+
+    <a  href="{{ url_for('LSINF1101_PYTHON') }}" >LSINF1101_PYTHON</a>
+    </center>
     <br>
     <br>

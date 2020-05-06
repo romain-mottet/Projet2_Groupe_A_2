@@ -3,7 +3,7 @@ Site web interactif du Groupe_A_2 dans le cadre du cours LINFO1102
 Pour metre en route notre site web il faut:
 - télécharger ce fichier zip 
 - l'extraire en entier
-- ouvrir le fichier run.py se trouvant dans le dossier webapp
+- ouvrir le fichier run.py se trouvant dans le dossier
 - Run ce fichier à l'aide votre IDE
 - Un lien vers le site en local devrait vous être proposer
 

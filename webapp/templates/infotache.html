@@ -283,7 +283,7 @@ mi a:hover
       labels: ["échoué","réussi"],
       datasets: [{
         label: "réussite",
-        backgroundColor: ["#f29530","#6fa03c"],
+        backgroundColor: ["red","green"],
         data: [{{infotache[2]}},{{infotache[1]}}]
       }]
     },
@@ -300,7 +300,7 @@ new Chart(document.getElementById("pie-chart4"), {
     labels: {{infotache[7][0]|safe}}, 
     datasets: [{ 
         data: {{infotache[7][1]|safe}},
-        label: "S1",
+        label: "Soumissions",
         borderColor: "brown",
         fill: false
       }

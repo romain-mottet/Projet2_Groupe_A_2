@@ -72,25 +72,17 @@ def count_error (type , name ):
     return lcount
 
 def get_all_name (name):
-
     """
     pré: name est le nom sous forme se string du cours où on veut récuperer les infos
     post: retourne une liste avec toutes les tâches étant dans ce cours
     """
-
     conn = sqlite3.connect ('inginious.sqlite')
     c = conn.cursor ()
-    c.execute ("SELECT task FROM user_tasks WHERE course = '{}' ".format(name))
-    content = c.fetchall()
+    c.execute("SELECT distinct(task) FROM user_tasks WHERE course = '{}' ".format(name))
+    content = c.fetchall ()
     list_names = []
-    for e in range (len(content)):
-        flag = False
-        for i in range(len (list_names)):
-            if list_names[i]== content[e][0]:
-                flag = True 
-                break
-        if flag == False:
-            list_names.append (content [e][0])
+    for i in range (len (content)):
+        list_names.append (content [i][0])
     return list_names
 
 def hours_month (course, month):

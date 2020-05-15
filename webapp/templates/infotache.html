@@ -4,6 +4,18 @@
 <title>INGInious stat v2.0</title>
 </head>
 {% include 'cours_struct.html' %} 
+      <h1 style="text-align:center;">2) résultats la tâche {{name_task}}</h1>
+    <p style="text-align:center;"> marquez ici le nom de la tâche sûr laquelle vous souhaitez faire des recherches</li><p>
+<center>
+<form method="POST">
+<input list="liste_tache" type="text" name= "name_tache", >
+<input type= "submit">
+<datalist id="liste_tache">
+    {{proposition|safe}}
+</datalist>
+    </center>
+  </form>
+    </p>
   <canvas id="pie-chart3" width="300" height="150"></canvas>
   <canvas id="pie-chart4" width="300" height="100"></canvas>
   <script>

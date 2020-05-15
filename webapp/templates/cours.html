@@ -1,4 +1,18 @@
 {% include 'cours_struct.html' %} 
+        <h1 style="text-align:center;">2) résultats pour un exercice demandé</h1>
+    <p style="text-align:center;"> marquez ici le nom de la tâche sûr laquelle vous souhaitez faire des recherches</li><p>
+<center>
+<form method="POST">
+<input list="liste_tache" type="text" name= "name_tache", >
+<input type= "submit">
+<datalist id="liste_tache">
+    {{proposition|safe}}
+</datalist>
+    </center>
+  </form>
+  <br>
+  <FONT COLOR="#ff0000">  {{name_task}}</FONT>
+    </p>
 </center>
 </script>
 </body>
@@ -18,4 +32,3 @@
     </center>
     <br>
     <br>
-

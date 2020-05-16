@@ -22,6 +22,7 @@ Pistes en cas d'erreur:
                 - cours_struct.html (vérifiez que le format est bien .html et pas txt)
                 - index.html (vérifiez que le format est bien .html et pas txt)
                 - infotache.html (vérifiez que le format est bien .html et pas txt)
+                - menu_barre.html (vérifiez que le format est bien .html et pas txt)
            - __init__.py (vérifiez que le format est bien .py et pas .txt)
            - views.py (vérifiez que le format est bien .py et pas .txt)
       - run.py (vérifiez que le format est bien .py et pas .txt)

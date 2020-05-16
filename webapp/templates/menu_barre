@@ -89,9 +89,9 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
      
      <ul>
-        <mi><a class= "active" href="{{ url_for('index') }}" ><img width="50" height="50" border="0" src="https://efficartes.fr/wp-content/uploads/2014/05/home-152619_640.png" alt="Bouton retour à l'accueil" /></a>    </mi>
+        <mi><a class= "active" href="{{ url_for('index') }}" ><img width="35" height="35" border="0" src="https://efficartes.fr/wp-content/uploads/2014/05/home-152619_640.png" alt="Bouton retour à l'accueil" /></a>    </mi>
      
-        <fi><a class="active" href="https://inginious.info.ucl.ac.be/signin"><img width="50" height="50" border="0"  src="https://inginious.info.ucl.ac.be/pages/assets/logo_ingi.png" alt="Bouton retour à l'accueil" /></a>
+        <fi><a class="active" href="https://inginious.info.ucl.ac.be/signin"><img width="35" height="35" border="0"  src="https://inginious.info.ucl.ac.be/pages/assets/logo_ingi.png" alt="Bouton retour à l'accueil" /></a>
      </fi>
     </ul>
     </style>

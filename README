@@ -10,11 +10,12 @@ Pour metre en route notre site web il faut:
 
 Pistes en cas d'erreur:
 1) Vérifier que le fichier est bien unzip
-2) Que les données sql sont bien téléchargées, et que la taille est différente de 0 ko
+2) Vérifiez que vous avez bien installé le framework Flask via pip
+3) Que les données sql sont bien téléchargées, et que la taille est différente de 0 ko
   si il y a un problème à ce niveau là retéléchargé via à ce lien "https://sites.uclouvain.be/P2SINF/_downloads/06779d3cb5fb694d50a00dc32fb1a90b/inginious.sqlite" les données
-  et placez les dans le même dossier que run.py et conf.py (fichier de départ)
+  et placez les dans le même dossier que run.py (fichier de départ voir l'agencement au point suivant )
  
- 3) Vérifier que le dossier téléchargé est bien sous cette forme
+ 4) Vérifier que le dossier téléchargé est bien sous cette forme
       
       - webapp (fichier)
            - templates (fichier)

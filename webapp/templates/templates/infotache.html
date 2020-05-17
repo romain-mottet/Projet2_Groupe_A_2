@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>INGInious stat v2.0</title>
+</head>
+<style>
+  div.scrollmenu {
+      background-color: #333;
+      overflow: auto;
+      white-space: nowrap;
+    }
+    
+    div.scrollmenu a {
+      display: inline-block;
+      color: white;
+      text-align: center;
+      padding: 14px;
+      text-decoration: none;
+    }
+    
+    div.scrollmenu a:hover {
+      background-color: #777;
+    }
+</style>
+{% include 'cours_struct.html' %} <!-- <p>import et inclu dans le site, la partie de la présentation du cours et des stats qui vont avec</p> -->
+      <h1 style="text-align:center;">2) résultats la tâche {{name_task}}</h1>
+    <p style="text-align:center;"> marquez ici le nom de la tâche sûr laquelle vous souhaitez faire des recherches</li><p>
+<center>
+<form method="POST">
+<input list="liste_tache" type="text" name= "name_tache", >
+<input type= "submit">
+<datalist id="liste_tache">
+    <!-- <p>utilise la methode Post pour chercher dans la base de donée la tâche demandée</p> -->
+    <center>
+    {{proposition|safe}}
+    </center>
+</datalist>
+    </center>
+  </form>
+    </p>
+  <canvas id="pie-chart3" width="300" height="150"></canvas>
+  <canvas id="pie-chart4" width="300" height="100"></canvas>
+  <script>
+    new Chart(document.getElementById("pie-chart3"), {
+    type: 'pie',
+    data: {
+      labels: ["réussi","échoué"],
+      datasets: [{
+        label: "réussite",
+        backgroundColor: ["#6fa03c","#f29530"],
+        data: [{{infotache[1]}},{{infotache[2]}}]
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: "nombre d étudiants ayant réussis cette tâche"
+      }
+    }
+});
+new Chart(document.getElementById("pie-chart4"), {
+  type: 'line',
+  data: {
+    labels: {{infotache[7][0]|safe}}, 
+    datasets: [{ 
+        data: {{infotache[7][1]|safe}},
+        label: "Soumissions",
+        borderColor: "brown",
+        fill: false
+      }
+    ]
+  },
+  options: {
+    title: {
+      display: true,
+      text: 'historique de soumissions par semaine'
+    }
+  }
+});
+</script>
+</body>
+</html>
+<br>
+    <br>
+    <center>
+    <div class="scrollmenu">
+
+    <a  href="{{ url_for('LEPL1402') }}" >LEPL1402</a>
+
+    <a  href="{{ url_for('LSINF1252') }}" >LSINF1252</a>
+
+    <a  href="{{ url_for('LSINF1101_PYTHON') }}" >LSINF1101_PYTHON</a>
+    </center>
+    <!-- <p>liens pour changer de cours</p> -->
+    <br>
+    <br>

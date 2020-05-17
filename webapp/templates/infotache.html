@@ -3,7 +3,7 @@
 <head>
 <title>INGInious stat v2.0</title>
 </head>
-{% include 'cours_struct.html' %} 
+{% include 'cours_struct.html' %} <!-- <p>import et inclu dans le site, la partie de la présentation du cours et des stats qui vont avec</p> -->
       <h1 style="text-align:center;">2) résultats la tâche {{name_task}}</h1>
     <p style="text-align:center;"> marquez ici le nom de la tâche sûr laquelle vous souhaitez faire des recherches</li><p>
 <center>
@@ -11,6 +11,7 @@
 <input list="liste_tache" type="text" name= "name_tache", >
 <input type= "submit">
 <datalist id="liste_tache">
+    <!-- <p>utilise la methode Post pour chercher dans la base de donée la tâche demandée</p> -->
     <center>
     {{proposition|safe}}
     </center>
@@ -73,6 +74,7 @@ new Chart(document.getElementById("pie-chart4"), {
 
     <a  href="{{ url_for('LSINF1101_PYTHON') }}" >LSINF1101_PYTHON</a>
     </center>
+  <!-- <p>liens vers les différents cours</p> -->
     <br>
     <br>
 

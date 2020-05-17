@@ -4,6 +4,24 @@
 <title>INGInious stat v2.0</title>
 </head>
 <style>
+  div.scrollmenu {
+      background-color: #333;
+      overflow: auto;
+      white-space: nowrap;
+    }
+    
+    div.scrollmenu a {
+      display: inline-block;
+      color: white;
+      text-align: center;
+      padding: 28px;
+      text-decoration: none;
+    }
+    
+    div.scrollmenu a:hover {
+      background-color: #777;
+    }
+
   body { 
   background-image: url("https://cdn.pixabay.com/photo/2017/07/31/21/42/wallpaper-2561368_960_720.jpg");
   background-size: cover;
@@ -24,17 +42,24 @@
 <p style="text-align:center;"; ><FONT size="10pt">INGIgraphe</p></FONT>
   <br>
 <p style="text-align:center;">Bienvenue, ce site à pour but de regrouper toutes les informations récoltées à propos des exercices inginious afin de vous permettre une vision d'ensemble </p>
-<!-- <p>liens des différents cours</p> -->
-<center>
-    <li><a href="{{ url_for('LEPL1402') }}">LEPL1402</a></li>
-    <li><a href="{{ url_for('LSINF1101_PYTHON') }}">LSINF1101_PYTHON</a></li>
-    <li><a href="{{ url_for('LSINF1252') }}">LSINF1252</a></li>
+<br>
     <br>
+    <center>
+    <div class="scrollmenu">
+
+    <a  href="{{ url_for('LEPL1402') }}" >LEPL1402</a>
+
+    <a  href="{{ url_for('LSINF1252') }}" >LSINF1252</a>
+
+    <a  href="{{ url_for('LSINF1101_PYTHON') }}" >LSINF1101_PYTHON</a>
+    </div>
     <!-- <p>liens pour changer de cours</p> -->
+    <br>
+    <br>
 
   </p><img src= "https://inginious.org/pages/assets/welcome/logo_full.png" alt=
   "dessin logo ingénious" width="350" height="500" ></p>
- 
+</center>
     </script>
 </body>
 </FONT>
